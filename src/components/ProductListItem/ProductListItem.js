@@ -7,10 +7,14 @@ export default function ProductListItem({
   imageUrl,
   onAddToCart,
   isSoldOut,
+  isOnSale,
 }) {
+  const cardClassName = isOnSale ? "card sale" : "card";
   return (
-    <div className="card">
-      <h2>{name}</h2>
+    <div className={cardClassName}>
+      <h2>
+        {name} {isOnSale && "(On Sale)"}
+      </h2>
       <img src={imageUrl} alt="" />
       <small>{price}</small>
       <button onClick={onAddToCart} disabled={isSoldOut}>
