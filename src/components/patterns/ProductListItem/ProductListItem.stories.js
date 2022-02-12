@@ -3,7 +3,7 @@ import ProductListItem from "./ProductListItem";
 import { action } from "@storybook/addon-actions";
 import { text, withKnobs } from "@storybook/addon-knobs";
 
-export default { title: "ProductListItem", decorators: [withKnobs] };
+export default { title: "patterns/ProductListItem", decorators: [withKnobs] };
 export const standard = () => (
   <ProductListItem
     name={text("Name", "Standard Coffee")}
