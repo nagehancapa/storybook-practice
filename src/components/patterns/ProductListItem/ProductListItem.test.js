@@ -1,23 +1,21 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import ProductListItem from "./ProductListItem";
+import { OnSale, SoldOut, Standard } from "./ProductListItem.stories";
 
 it("shows on sale label when isOnSale", () => {
-  render(<ProductListItem name="Mocha" price={3.5} imageUrl="..." isOnSale />);
+  render(<OnSale />);
   const onSale = screen.getByText(/(On Sale)/i);
   expect(onSale).toBeInTheDocument();
 });
 
 it("disables the button when disables", () => {
-  render(<ProductListItem name="Mocha" price={3.5} isSoldOut />);
+  render(<SoldOut />);
   const soldOut = screen.getByText(/Sold out/i);
   expect(soldOut).toHaveProperty("disabled");
 });
 
 it("calls callback when button Add to Cart pressed", () => {
   const onAddToCart = jest.fn();
-  render(
-    <ProductListItem name="Mocha" price={3.5} onAddToCart={onAddToCart} />
-  );
+  render(<Standard onAddToCart={onAddToCart} />);
   const input = screen.getByText(/Add to Cart/i);
   fireEvent.click(input);
   expect(onAddToCart).toHaveBeenCalled();
