@@ -13,7 +13,15 @@ export default function ProductListItem({
   onAddToCart,
   isSoldOut,
   isOnSale,
+  isInCart,
 }) {
+  let buttonText = "Add to Cart";
+  if (isSoldOut) {
+    buttonText = "Sold out";
+  }
+  if (isInCart) {
+    buttonText = "Remove from Cart";
+  }
   return (
     <Card highlight={isOnSale}>
       <Heading>
@@ -22,7 +30,7 @@ export default function ProductListItem({
       <img src={imageUrl} alt="" />
       <Text>{price}</Text>
       <Button onClick={onAddToCart} disabled={isSoldOut}>
-        {isSoldOut ? "Sold out" : "Add to Cart"}
+        {buttonText}
       </Button>
     </Card>
   );

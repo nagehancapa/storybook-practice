@@ -1,16 +1,16 @@
 import React from "react";
 import ProductListItem from "../ProductListItem";
+import { statusTypes } from "../../../constants/api";
 
 const Loading = () => <span>Loading</span>;
 const Error = ({ message }) => <span>An error has occured! {message}</span>;
 
-export const statusTypes = {
-  loading: "loading",
-  errored: "errored",
-  loaded: "loaded",
+export const listTypes = {
+  productList: "productList",
+  cart: "cart",
 };
 
-export default function ProductList({ status, data, onAddToCart }) {
+export default function ProductList({ status, data, onAddToCart, listType }) {
   if (status === statusTypes.loading) {
     return <Loading />;
   }
@@ -22,6 +22,7 @@ export default function ProductList({ status, data, onAddToCart }) {
       key={item.id}
       name={item.name}
       price={item.price}
+      isInCart={listType === listTypes.cart}
       onAddToCart={() => {
         onAddToCart(item.id);
       }}

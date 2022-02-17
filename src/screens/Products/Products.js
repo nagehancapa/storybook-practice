@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ProductList, {
-  statusTypes,
-} from "../../components/patterns/ProductList";
+import ProductList from "../../components/patterns/ProductList";
+import { statusTypes } from "../../constants/api";
 
 export default function Products() {
   const [productState, setProductState] = useState({
